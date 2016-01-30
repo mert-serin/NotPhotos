@@ -1,0 +1,6 @@
+framework module Pods_NotPhotos {
+  umbrella header "Pods-NotPhotos-umbrella.h"
+
+  export *
+  module * { export * }
+}
