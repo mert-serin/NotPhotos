@@ -20,7 +20,7 @@ class GalleryViewController:UIViewController,UICollectionViewDataSource,UICollec
     
     
     override func viewDidLoad() {
-        //getDirectoryArray()
+        getDirectoryArray()
         
     }
     

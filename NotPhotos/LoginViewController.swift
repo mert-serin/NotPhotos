@@ -147,14 +147,17 @@ class LoginViewController: UIViewController,UITextFieldDelegate{
         if authContext.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &error){
             
             authContext.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: "Testing Touch ID", reply: { (complete, error) -> Void in
-                
-                if(complete){
-                    let vc = self.storyboard?.instantiateViewControllerWithIdentifier("home") as! UITabBarController
-                    self.presentViewController(vc, animated: true, completion: nil)
-                }
+                dispatch_async(dispatch_get_main_queue(), {
+                    if complete {
+                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("home") as! UITabBarController
+                        vc.selectedIndex = 0
+                        self.presentViewController(vc, animated: true, completion: nil)
+                    }
+
                 else{
                     //Uyarı
                 }
+                })
                 
             })
             
